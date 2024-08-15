@@ -1,8 +1,5 @@
 # Seasonal Bike Rental Analysis
 
-## Project Title:
-Seasonal Bike Rental Analysis
-
 ## Project Objective:
 To build a simple web application that will allow users to explore data through a user-friendly interface and answer business-related questions.
 
