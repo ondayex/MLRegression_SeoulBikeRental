@@ -33,16 +33,16 @@ Deployment: Deploying the model using a cloud service (AWS/GCP).
 Web Application: Developing a Streamlit web app for external users to interact with the model.
 
 # Project Phases
-Phase One
-Data Acquisition: Gathering relevant datasets for analysis.
-Data Exploration: Analyzing data to understand its structure and key characteristics.
-Data Cleaning & Preprocessing: Preparing the data for modeling by handling missing values, outliers, etc.
+### Phase One
++ Data Acquisition: Gathering relevant datasets for analysis.
++ Data Exploration: Analyzing data to understand its structure and key characteristics.
++ Data Cleaning & Preprocessing: Preparing the data for modeling by handling missing values, outliers, etc.
 
-Phase Two
-Feature Engineering: Creating new features or modifying existing ones to improve model performance.
-Model Building & Selection: Developing and selecting the best regression model for predicting bike rental demand.
-Model Evaluation & Training: Evaluating model performance and fine-tuning as necessary.
+### Phase Two
++ Feature Engineering: Creating new features or modifying existing ones to improve model performance.
++ Model Building & Selection: Developing and selecting the best regression model for predicting bike rental demand.
++ Model Evaluation & Training: Evaluating model performance and fine-tuning as necessary.
 
-Phase Three
-Streamlit App GUI: Designing the graphical user interface for the web application.
-Deployment: Deploying the web application on a cloud platform (e.g., AWS/GCP) for public use.
+### Phase Three
++ Streamlit App GUI: Designing the graphical user interface for the web application.
++ Deployment: Deploying the web application on a cloud platform (e.g., AWS/GCP) for public use.
