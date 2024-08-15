@@ -1,36 +1,36 @@
-## Seasonal Bike Rental Analysis
+# Seasonal Bike Rental Analysis
 
-# Project Title:
+## Project Title:
 Seasonal Bike Rental Analysis
 
-# Project Objective:
+## Project Objective:
 To build a simple web application that will allow users to explore data through a user-friendly interface and answer business-related questions.
 
-# Business Problem
+## Business Problem
 This project aims to optimize bike rental operations in Seoul by leveraging data-driven insights. By analyzing various factors affecting bike rentals, we can improve resource allocation, enhance user experience, and potentially increase revenue for the bike rental service.
 
-# Project Objectives
-Identify and quantify the top 3-5 factors influencing bike rental demand in Seoul, providing actionable insights for operational decision-making.
-Develop a regression model to predict hourly bike rental demand with at least 85% accuracy.
-Design and deploy an interactive web application using Streamlit, allowing users to test the regression model through an intuitive interface.
+## Project Objectives
++ Identify and quantify the top 3-5 factors influencing bike rental demand in Seoul, providing actionable insights for operational decision-making.
++ Develop a regression model to predict hourly bike rental demand with at least 85% accuracy.
++ Design and deploy an interactive web application using Streamlit, allowing users to test the regression model through an intuitive interface.
 
-# Specific Questions/Insights Provided
-What are the most significant factors influencing bike rental demand in Seoul?
-How do seasonal changes and weather conditions impact bike rental patterns?
-Are there any trends or patterns in bike rental usage during holidays or specific hours of the day?
-How does air quality (visibility) affect bike rental behavior?
+## Specific Questions/Insights Provided
++ What are the most significant factors influencing bike rental demand in Seoul?
++ How do seasonal changes and weather conditions impact bike rental patterns?
++ Are there any trends or patterns in bike rental usage during holidays or specific hours of the day?
++ How does air quality (visibility) affect bike rental behavior?
 
-# Value Generation for the Organization
-Efficient Bike Distribution: Enabling more efficient bike distribution across the city based on predicted demand.
-Marketing Strategies: Informing marketing strategies to boost rentals during typically low-usage times.
-Financial Planning: Assisting in budget allocation and financial planning based on expected rental patterns.
-Customer Satisfaction: Improving customer satisfaction by ensuring bike availability during high-demand periods.
+## Value Generation for the Organization
++ Efficient Bike Distribution: Enabling more efficient bike distribution across the city based on predicted demand.
++ Marketing Strategies: Informing marketing strategies to boost rentals during typically low-usage times.
++ Financial Planning: Assisting in budget allocation and financial planning based on expected rental patterns.
++ Customer Satisfaction: Improving customer satisfaction by ensuring bike availability during high-demand periods.
 
-# Project Scope
-Data Formatting and Exploration: Initial formatting and exploratory data analysis.
-ML Model Development: Building a machine learning model to predict bike rental demand (Regression model).
-Deployment: Deploying the model using a cloud service (AWS/GCP).
-Web Application: Developing a Streamlit web app for external users to interact with the model.
+## Project Scope
++ Data Formatting and Exploration: Initial formatting and exploratory data analysis.
++ ML Model Development: Building a machine learning model to predict bike rental demand (Regression model).
++ Deployment: Deploying the model using a cloud service (AWS/GCP).
++ Web Application: Developing a Streamlit web app for external users to interact with the model.
 
 # Project Phases
 ### Phase One
