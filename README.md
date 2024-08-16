@@ -1,7 +1,7 @@
 # Seasonal Bike Rental Analysis
 
 ## Project Objective:
-To build a simple web application that will allow users to explore data through a user-friendly interface and answer business-related questions.
+To build a simple web application using **ML Regression Models** that will allow users to explore data through a user-friendly interface and answer business-related questions.
 
 ## Business Problem
 This project aims to optimize bike rental operations in Seoul by leveraging data-driven insights. By analyzing various factors affecting bike rentals, we can improve resource allocation, enhance user experience, and potentially increase revenue for the bike rental service.
