@@ -6,25 +6,23 @@ To build a simple web application using **ML Regression Models** that will allow
 ## Business Problem
 This project aims to optimize bike rental operations in Seoul by leveraging data-driven insights. By analyzing various factors affecting bike rentals, we can improve resource allocation, enhance user experience, and potentially increase revenue for the bike rental service. The original dataset has the following information:
 
-RangeIndex: 8760 entries, 0 to 8759
-Data columns (total 14 columns):
- #   Column                     Non-Null Count  Dtype  
----  ------                     --------------  -----  
- 0   Date                       8760 non-null   object 
- 1   Rented Bike Count          8760 non-null   int64  
- 2   Hour                       8760 non-null   int64  
- 3   Temperature(°C)            8760 non-null   float64
- 4   Humidity(%)                8760 non-null   int64  
- 5   Wind speed (m/s)           8760 non-null   float64
- 6   Visibility (10m)           8760 non-null   int64  
- 7   Dew point temperature(°C)  8760 non-null   float64
- 8   Solar Radiation (MJ/m2)    8760 non-null   float64
- 9   Rainfall(mm)               8760 non-null   float64
- 10  Snowfall (cm)              8760 non-null   float64
- 11  Seasons                    8760 non-null   object 
- 12  Holiday                    8760 non-null   object 
- 13  Functioning Day            8760 non-null   object 
-dtypes: float64(6), int64(4), object(4)
+| #  | Column                        | Non-Null Count | Dtype   |
+|----|-------------------------------|----------------|---------|
+| 0  | Date                          | 8760 non-null  | object  |
+| 1  | Rented Bike Count             | 8760 non-null  | int64   |
+| 2  | Hour                          | 8760 non-null  | int64   |
+| 3  | Temperature(°C)               | 8760 non-null  | float64 |
+| 4  | Humidity(%)                   | 8760 non-null  | int64   |
+| 5  | Wind speed (m/s)              | 8760 non-null  | float64 |
+| 6  | Visibility (10m)              | 8760 non-null  | int64   |
+| 7  | Dew point temperature(°C)     | 8760 non-null  | float64 |
+| 8  | Solar Radiation (MJ/m2)       | 8760 non-null  | float64 |
+| 9  | Rainfall(mm)                  | 8760 non-null  | float64 |
+| 10 | Snowfall (cm)                 | 8760 non-null  | float64 |
+| 11 | Seasons                       | 8760 non-null  | object  |
+| 12 | Holiday                       | 8760 non-null  | object  |
+| 13 | Functioning Day               | 8760 non-null  | object  |
+
 
 ## Project Objectives
 + Identify and quantify the top 3-5 factors influencing bike rental demand in Seoul, providing actionable insights for operational decision-making.
