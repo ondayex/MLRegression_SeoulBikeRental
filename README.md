@@ -6,6 +6,8 @@ To build a simple web application using **ML Regression Models** that will allow
 ## Business Problem
 This project aims to optimize bike rental operations in Seoul by leveraging data-driven insights. By analyzing various factors affecting bike rentals, we can improve resource allocation, enhance user experience, and potentially increase revenue for the bike rental service. The original dataset has the following information:
 
+RangeIndex: 8760 entries, 0 to 8759
+Data columns (total 14 columns):
 | #  | Column                        | Non-Null Count | Dtype   |
 |----|-------------------------------|----------------|---------|
 | 0  | Date                          | 8760 non-null  | object  |
@@ -22,7 +24,7 @@ This project aims to optimize bike rental operations in Seoul by leveraging data
 | 11 | Seasons                       | 8760 non-null  | object  |
 | 12 | Holiday                       | 8760 non-null  | object  |
 | 13 | Functioning Day               | 8760 non-null  | object  |
-
+dtypes: float64(6), int64(4), object(4)
 
 ## Project Objectives
 + Identify and quantify the top 3-5 factors influencing bike rental demand in Seoul, providing actionable insights for operational decision-making.
