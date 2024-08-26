@@ -2,6 +2,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.datasets import make_regression
+from sklearn.feature_selection import SelectKBest
+from sklearn.feature_selection import mutual_info_regression
 
 # %%
 # load dataset，check for missing values and see the data types
@@ -21,6 +24,22 @@ print(dataset.iloc[:, [2,3,4,5,6,7,8,9,10]].describe())
 
 dataset[['Hour','Temperature','Humidity(%)','Wind speed (m/s)','Visibility (10m)','Dew point temperature','Solar Radiation (MJ/m2)','Rainfall(mm)','Snowfall (cm)']].hist(bins=20, edgecolor='black', figsize=(12, 6))
 plt.show()
+
+#SelectKBest on numerical features for feature selection (correlation)
+dataset_num= dataset.drop(columns=['Rented Bike Count'])  # Exclude the target column
+y = dataset['Rented Bike Count']
+X_numerical = dataset_num.select_dtypes(include=[float, int])
+k = 9  # Example: Select the top 10 features
+selector = SelectKBest(score_func='f_regression', k=k)
+
+# Fit the selector to the data
+X_selected = selector.fit_transform(X_numerical, y)
+
+# Get the selected feature names
+selected_features = X_numerical.columns[selector.get_support()]
+
+print("Selected features:", selected_features)
+
 # %%
 #Statistical summary of categorical features (distribution)
 print(dataset.iloc[:, [11,12,13]].describe())
