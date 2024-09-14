@@ -6,11 +6,20 @@ from sklearn.datasets import make_regression
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import mutual_info_regression
 
+
 # %%
 # load dataset，check for missing values and see the data types
 dataset = pd.read_csv('dataset/SeoulBikeData.csv')
 dataset.info()
 print(dataset.head(30))
+
+# %%
+#split data into train and test
+from sklearn.model_selection import train_test_split
+X = dataset.iloc[:, 2:].values
+y = dataset.iloc[:,1].values
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+print(X, y)
 
 # %%
 #further check on categorical features
@@ -73,11 +82,5 @@ dataset['Functioning Day'] = dataset['Functioning Day'].apply(lambda x: 1 if x =
 
 print(dataset.head(30))
 
-# %%
-#split data into train and test
-from sklearn.model_selection import train_test_split
-X = dataset.iloc[:, 2:].values
-y = dataset.iloc[:,1].values
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-print(X, y)
+
 
