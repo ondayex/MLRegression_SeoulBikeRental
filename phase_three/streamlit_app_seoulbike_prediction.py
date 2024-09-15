@@ -49,7 +49,7 @@ with col2:
 input_data = pd.DataFrame({
     'Date': [date.strftime("%A")],
     'Hour': [hour],
-    'Temperature(°C)': [temperature],
+    'Temperature': [temperature],
     'Humidity(%)': [humidity],
     'Wind speed (m/s)': [wind_speed],
     'Visibility (10m)': [visibility],
