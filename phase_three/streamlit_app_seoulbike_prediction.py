@@ -4,7 +4,7 @@ import pickle
 from datetime import datetime
 import os
 
-st.title('Bike Rental Prediction App')
+st.title('Seoul Bike Rental Prediction App')
 
 # Check if the model file exists
 model_path = 'bike_rental_model_xgboost.pkl'
@@ -12,17 +12,13 @@ model_exists = os.path.exists(model_path)
 
 if not model_exists:
     st.error(f"Model file '{model_path}' not found. Please ensure the model file is in the same directory as this script.")
-    st.info("For now, the app will run in demo mode with a mock prediction function.")
+    st.stop()  # This will halt the execution of the app if the model is not found
 
-# Load the saved model or use a mock function
+# Load the saved model
 @st.cache_resource
 def load_model():
-    if model_exists:
-        with open(model_path, 'rb') as f:
-            return pickle.load(f)
-    else:
-        # Mock prediction function
-        return lambda x: [100]  # Always predicts 100 bikes
+    with open(model_path, 'rb') as f:
+        return pickle.load(f)
 
 model = load_model()
 
@@ -66,20 +62,17 @@ input_data = pd.DataFrame({
 if st.button('Predict Bike Rentals'):
     prediction = model.predict(input_data)
     st.success(f"Predicted number of bike rentals: {int(prediction[0])}")
-    
-    if not model_exists:
-        st.warning("Note: This is a mock prediction. To get accurate predictions, please add the model file to the app directory.")
 
 st.write("""
 ### Note:
 This prediction is based on historical data and may not account for current events or changes in bike rental patterns.
 """)
 
-if not model_exists:
-    st.write("""
-    ### How to add the model file:
-    1. Ensure you have run the 'export_xgboost_model.py' script to generate the 'bike_rental_model_xgboost.pkl' file.
-    2. Add the 'bike_rental_model_xgboost.pkl' file to your GitHub repository in the same directory as this Streamlit app.
-    3. Commit and push the changes to GitHub.
-    4. Redeploy your Streamlit app or wait for automatic deployment (if set up).
-    """)
+st.write("""
+### How to add the model file:
+If you're seeing an error about a missing model file, follow these steps:
+1. Ensure you have run the 'export_xgboost_model.py' script to generate the 'bike_rental_model_xgboost.pkl' file.
+2. Add the 'bike_rental_model_xgboost.pkl' file to your GitHub repository in the same directory as this Streamlit app.
+3. Commit and push the changes to GitHub.
+4. Redeploy your Streamlit app or wait for automatic deployment (if set up).
+""")
