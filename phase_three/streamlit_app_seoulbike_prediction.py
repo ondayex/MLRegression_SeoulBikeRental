@@ -7,7 +7,7 @@ import os
 st.title('Bike Rental Prediction App')
 
 # Check if the model file exists
-model_path = '/phase_three/bike_rental_model_xgboost.pkl'
+model_path = './phase_three/bike_rental_model_xgboost.pkl'
 model_exists = os.path.exists(model_path)
 
 if not model_exists:
