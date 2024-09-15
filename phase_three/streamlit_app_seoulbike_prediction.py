@@ -2,16 +2,29 @@ import streamlit as st
 import pandas as pd
 import pickle
 from datetime import datetime
-
-# Load the saved model
-@st.cache_resource
-def load_model():
-    with open('bike_rental_model_xgboost.pkl', 'rb') as f:
-        return pickle.load(f)
-
-model = load_model()
+import os
 
 st.title('Bike Rental Prediction App')
+
+# Check if the model file exists
+model_path = 'bike_rental_model_xgboost.pkl'
+model_exists = os.path.exists(model_path)
+
+if not model_exists:
+    st.error(f"Model file '{model_path}' not found. Please ensure the model file is in the same directory as this script.")
+    st.info("For now, the app will run in demo mode with a mock prediction function.")
+
+# Load the saved model or use a mock function
+@st.cache_resource
+def load_model():
+    if model_exists:
+        with open(model_path, 'rb') as f:
+            return pickle.load(f)
+    else:
+        # Mock prediction function
+        return lambda x: [100]  # Always predicts 100 bikes
+
+model = load_model()
 
 st.write("""
 This app predicts the number of bike rentals based on various features.
@@ -53,8 +66,20 @@ input_data = pd.DataFrame({
 if st.button('Predict Bike Rentals'):
     prediction = model.predict(input_data)
     st.success(f"Predicted number of bike rentals: {int(prediction[0])}")
+    
+    if not model_exists:
+        st.warning("Note: This is a mock prediction. To get accurate predictions, please add the model file to the app directory.")
 
 st.write("""
 ### Note:
 This prediction is based on historical data and may not account for current events or changes in bike rental patterns.
 """)
+
+if not model_exists:
+    st.write("""
+    ### How to add the model file:
+    1. Ensure you have run the 'export_xgboost_model.py' script to generate the 'bike_rental_model_xgboost.pkl' file.
+    2. Add the 'bike_rental_model_xgboost.pkl' file to your GitHub repository in the same directory as this Streamlit app.
+    3. Commit and push the changes to GitHub.
+    4. Redeploy your Streamlit app or wait for automatic deployment (if set up).
+    """)
