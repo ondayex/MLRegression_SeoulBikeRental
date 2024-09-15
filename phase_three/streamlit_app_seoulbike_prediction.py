@@ -3,40 +3,58 @@ import pandas as pd
 import pickle
 from datetime import datetime
 
-# Load the trained pipeline model
-with open('E:/CP05_seasonal_bike_rental/phase_three/bike_rental_model_xgboost.pkl', 'rb') as f:
-    model = pickle.load(f)
+# Load the saved model
+@st.cache_resource
+def load_model():
+    with open('bike_rental_model_xgboost.pkl', 'rb') as f:
+        return pickle.load(f)
 
-# Create a simple input form for the user to provide feature values
-st.title("Seoul Bike Rental Prediction App")
+model = load_model()
 
-# Input form for user data
-hour = st.slider('Hour', 0, 23, 12)
-temperature = st.number_input('Temperature (°C)', min_value=-30.0, max_value=40.0)
-humidity = st.number_input('Humidity (%)', min_value=0, max_value=100)
-wind_speed = st.number_input('Wind Speed (m/s)', min_value=0.0, max_value=20.0)
-visibility = st.number_input('Visibility (10m)', min_value=0, max_value=2000)
-solar_radiation = st.number_input('Solar Radiation (MJ/m2)', min_value=0.0, max_value=3.0)
-rainfall = st.number_input('Rainfall (mm)', min_value=0.0, max_value=100.0)
-snowfall = st.number_input('Snowfall (cm)', min_value=0.0, max_value=50.0)
+st.title('Bike Rental Prediction App')
 
-# Dropdown options for categorical inputs
-season = st.selectbox('Season', ['Spring', 'Summer', 'Autumn', 'Winter'])
-holiday = st.selectbox('Holiday', ['Holiday', 'No Holiday'])
+st.write("""
+This app predicts the number of bike rentals based on various features.
+Please input the required information below.
+""")
 
-# Date input to automatically detect the day of the week
-date_input = st.date_input('Select a date', datetime.today())
-day_of_week = date_input.weekday()  # Monday=0, Sunday=6
+# Input features
+col1, col2 = st.columns(2)
 
-# Create a DataFrame with the user input (including day of the week)
-input_data = pd.DataFrame([[hour, temperature, humidity, wind_speed, visibility,
-                            solar_radiation, rainfall, snowfall, season, holiday, day_of_week]],
-                          columns=['Hour', 'Temperature', 'Humidity(%)', 'Wind speed (m/s)', 'Visibility (10m)',
-                                   'Solar Radiation (MJ/m2)', 'Rainfall(mm)', 'Snowfall (cm)', 
-                                   'Seasons', 'Holiday', 'Date'])
+with col1:
+    date = st.date_input("Date", datetime.now())
+    temperature = st.slider("Temperature (°C)", -20.0, 40.0, 20.0)
+    humidity = st.slider("Humidity (%)", 0, 100, 50)
+    wind_speed = st.slider("Wind Speed (m/s)", 0.0, 10.0, 2.0)
+    visibility = st.slider("Visibility (10m)", 0, 2000, 1000)
 
-# Make a prediction using the trained model
-prediction = model.predict(input_data)
+with col2:
+    solar_radiation = st.slider("Solar Radiation (MJ/m2)", 0.0, 5.0, 1.0)
+    rainfall = st.slider("Rainfall (mm)", 0.0, 100.0, 0.0)
+    snowfall = st.slider("Snowfall (cm)", 0.0, 30.0, 0.0)
+    seasons = st.selectbox("Season", ["Spring", "Summer", "Autumn", "Winter"])
+    holiday = st.selectbox("Holiday", ["No Holiday", "Holiday"])
 
-# Display the prediction
-st.write(f"Predicted Number of Bike Rentals: {int(prediction[0]):,}")
+# Prepare input data
+input_data = pd.DataFrame({
+    'Date': [date.strftime("%A")],
+    'Temperature(°C)': [temperature],
+    'Humidity(%)': [humidity],
+    'Wind speed (m/s)': [wind_speed],
+    'Visibility (10m)': [visibility],
+    'Solar Radiation (MJ/m2)': [solar_radiation],
+    'Rainfall(mm)': [rainfall],
+    'Snowfall (cm)': [snowfall],
+    'Seasons': [seasons],
+    'Holiday': [holiday]
+})
+
+# Make prediction
+if st.button('Predict Bike Rentals'):
+    prediction = model.predict(input_data)
+    st.success(f"Predicted number of bike rentals: {int(prediction[0])}")
+
+st.write("""
+### Note:
+This prediction is based on historical data and may not account for current events or changes in bike rental patterns.
+""")
