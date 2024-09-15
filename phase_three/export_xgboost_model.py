@@ -39,5 +39,5 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 pipeline.fit(X_train, y_train)
 
 # Save the pipeline (preprocessing + model) as a pickle file
-with open('"E:/CP05_seasonal_bike_rental/phase_three/bike_rental_model_xgboost.pkl"', 'wb') as f:
+with open('E:/CP05_seasonal_bike_rental/phase_three/bike_rental_model_xgboost.pkl', 'wb') as f:
     pickle.dump(pipeline, f)

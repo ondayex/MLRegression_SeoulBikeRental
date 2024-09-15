@@ -4,7 +4,7 @@ import pickle
 from datetime import datetime
 
 # Load the trained pipeline model
-with open('bike_rental_model_xgboost.pkl', 'rb') as f:
+with open('E:/CP05_seasonal_bike_rental/phase_three/bike_rental_model_xgboost.pkl', 'rb') as f:
     model = pickle.load(f)
 
 # Create a simple input form for the user to provide feature values
